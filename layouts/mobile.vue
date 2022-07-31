@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Header />
+    <MobileHeader />
     <main class="container">
       <Nuxt></Nuxt>
     </main>
@@ -8,15 +8,15 @@
 </template>
 
 <script lang="ts">
-import Header from '~/components/header/Header.vue'
+import MobileHeader from '~/components/header/MobileHeader.vue'
 
 import headLinks from '~/data/headLinks'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Default',
+  name: 'Mobile',
   components: {
-    Header,
+    MobileHeader,
   },
   head: {
     link: headLinks.headLinks,

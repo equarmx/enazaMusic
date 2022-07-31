@@ -7,6 +7,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'IndexPage',
+  layout: (ctx) => (ctx.$device.isMobile ? 'mobile' : 'default'),
 })
 </script>
 
