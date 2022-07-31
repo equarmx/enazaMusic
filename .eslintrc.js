@@ -4,32 +4,32 @@ module.exports = {
     browser: true,
     node: true,
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: '@babel/eslint-parser',
-    requireConfigFile: false,
-  },
-  plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': ['error', {
-      "endOfLine": "auto",
-      "printWidth": 100
-    }],
-    'vue/html-indent': ['error', 4],
-    'vue/singleline-html-element-content-newline': 0,
-    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-    'vue/valid-v-slot': [
-      'error',
-      {
-        allowModifiers: true,
-      },
-    ],
-  },
-  globals: {
-    _: true,
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2017,
+    sourceType: 'module',
   },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
+    '@nuxtjs',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
     'prettier',
+    // 'prettier/@typescript-eslint'//do not
   ],
+  plugins: ['@typescript-eslint', 'prettier'],
+  // add your custom rules here
+  rules: {
+    'prettier/prettier': 'error',
+    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-unused-vars': 'off',
+    'prefer-const': 'off',
+    'require-await': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/no-unused-components': 'off',
+  },
 }

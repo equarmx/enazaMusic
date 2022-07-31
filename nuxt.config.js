@@ -1,4 +1,11 @@
 export default {
+  typescript: {
+    typeCheck: {
+      eslint: {
+        files: './**/*.{ts,js,vue}',
+      },
+    },
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'enazaMusic',
