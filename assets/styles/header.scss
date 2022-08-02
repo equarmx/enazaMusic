@@ -28,7 +28,7 @@
 
 .navbar {
   background: $base-color;
-  max-width: 1440px;
+  max-width: 1185px;
   width: 100%;
   display: grid;
   grid-template-columns:
@@ -63,6 +63,10 @@
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
+}
+
+.img {
+  padding: 0 !important;
 }
 
 $dark: #212121;

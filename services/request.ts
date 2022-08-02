@@ -2,38 +2,58 @@ import axios, { AxiosInstance } from 'axios'
 
 const axiosClient: AxiosInstance = axios.create({
   baseURL: 'https://api.mobimusic.kz',
+  params: {
+    limit: 10,
+  },
 })
 
 export interface IAlbum {
-  id?: number
-  name?: string
-  coverUrl?: string
-  year?: string
-  trackCount?: number
-  duration?: number
+  id: string
+  parent?: string | null
+  name: string
+  cover: string
+  coverUrl: string
+  year: string
+  price: string
+  dir: string
+  state: string
+  peopleIds: string[]
+  duration: number
+  trackCount: number
+  isUserLikes: boolean
+}
+
+export interface IAuthor {
+  id: string
+  name: string
+  dir: string
+  typeName: string
+  productCount: string
+  productChildCount: string
+  genres: string[]
+  cover_file: string
+  coverUrl: string
+  isUserLikes: boolean
+  description: string
+}
+
+export interface IResponse {
+  album: Array<IAlbum>
+  people: Array<IAuthor>
 }
 
 export default class Product {
   static async getNews(
-    url: string
-  ): Promise<Array<IAlbum> | string | undefined> {
+    url: string,
+    page: string
+  ): Promise<IResponse | undefined> {
     try {
-      let arr: Array<IAlbum> = []
-      let obj: IAlbum = {}
-
-      const { data } = await axiosClient.get(url)
-      for (const key of Object.keys(data.collection.album)) {
-        let element = data.collection.album[key]
-        obj.id = element.id
-        obj.name = element.name
-        obj.coverUrl = element.coverUrl
-        obj.year = element.year
-        obj.trackCount = element.trackCount
-        obj.duration = element.duration
-        arr.push(Object.assign({}, obj))
-        obj = {}
-      }
-      return arr
+      const { data } = await axiosClient.get(url, {
+        params: {
+          page,
+        },
+      })
+      return data.collection
     } catch (error) {
       console.log(error)
     }

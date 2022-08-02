@@ -31,4 +31,8 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0 !important;
 }
+
+.container {
+  max-width: 1185px !important;
+}
 </style>

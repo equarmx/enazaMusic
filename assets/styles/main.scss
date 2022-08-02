@@ -1,3 +1,24 @@
 $base-color: #007aff;
 $main-text: #4f4f4f;
 $sub-text: #a7a7a7;
+
+.main-wrapper {
+  &__breadcrumbs {
+
+  }
+
+  &__album-list {
+    &__title {
+      font-weight: 700;
+      font-size: 48px;
+      color: #4F4F4F;
+    }
+
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 20px;
+      column-gap: 20px;
+    }
+  }
+}
