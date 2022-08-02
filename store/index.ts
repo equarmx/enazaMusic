@@ -1,36 +1,54 @@
+import Vue from 'vue'
 // eslint-disable-next-line import/named
-import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import Vuex, { GetterTree, MutationTree, ActionTree } from 'vuex'
+
+import Product from '~/services/request'
+
+Vue.use(Vuex)
 
 interface INotification {
   message: string
   show: boolean
 }
 
-export const state = () => ({
-  notification: {
+class State {
+  notification: INotification = {
     message: '',
     show: false,
-  } as INotification,
-})
+  }
 
-export type RootState = ReturnType<typeof state>
-
-export const getters: GetterTree<RootState, RootState> = {
-  // name: (state) => state.name,
+  isLoading = false
 }
 
-export const mutations: MutationTree<RootState> = {
-  // CHANGE_NAME: (state, newName: string) => (state.name = newName),
-  CHANGE_NOTIFICATION: (state, value: string) => {
+const getters = <GetterTree<State, string | number | object | []>>{}
+
+const mutations = <MutationTree<State>>{
+  CHANGE_NOTIFICATION(state, value: string) {
     state.notification.show = true
     state.notification.message = value
   },
-}
-
-export const actions: ActionTree<RootState, RootState> = {
-  async fetchThings({ commit }) {
-    const things = await this.$axios.$get('/things')
-    console.log(things)
-    commit('CHANGE_NAME', 'New name')
+  SET_LOADING_STATUS(state, value: boolean) {
+    state.isLoading = value
   },
 }
+
+const actions = <ActionTree<State, string | number | object | []>>{
+  async getNews() {
+    return await Product.getNews(
+      'https://api.mobimusic.kz/?method=product.getNews&page=1&limit=10'
+    )
+  },
+}
+
+const createStore = () => {
+  // eslint-disable-next-line import/no-named-as-default-member
+  return new Vuex.Store({
+    state: new State(),
+    mutations,
+    actions,
+    getters,
+    modules: {},
+  })
+}
+
+export default createStore
