@@ -7,10 +7,19 @@
     >
       <div class="player_controller">
         <div class="player_controller__invisible">
-          <b-icon icon="play" type="is-white" size="is-medium"></b-icon>
+          <b-icon
+            :icon="playing ? 'pause' : 'play'"
+            type="is-white"
+            size="is-medium"
+          ></b-icon>
         </div>
         <div class="player_controller__status">
-          <svg width="50" height="50" class="player_controller__status__svg">
+          <svg
+            width="50"
+            height="50"
+            class="player_controller__status__svg"
+            @click="onClickPlayer"
+          >
             <circle
               ref="circle"
               class="player_controller__status__svg__circle"
@@ -42,9 +51,12 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import getAuthorString from '~/utils/getAuthorsString'
 import getDurationToMinutes from '~/utils/getDurationToMinutes'
+import getDurationToPercent from '~/utils/getDurationToPercent'
 
 @Component
 export default class Player extends Vue {
+  playing = false
+
   get authorsString(): string {
     return getAuthorString(
       this.$store.state.authors,
@@ -70,7 +82,19 @@ export default class Player extends Vue {
   }
 
   get getProgress(): number {
-    return this.circumference - (90 / 100) * this.circumference
+    return (
+      this.circumference -
+      (getDurationToPercent(
+        this.$store.state.currentPlaying.duration,
+        this.$store.state.durationPlay
+      ) /
+        100) *
+        this.circumference
+    )
+  }
+
+  onClickPlayer(): void {
+    this.playing = !this.playing
   }
 }
 </script>

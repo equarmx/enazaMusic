@@ -5,7 +5,8 @@
     </div>
     <div class="album_preview__content">
       <span class="album_preview__content__name_year"
-        >{{ album.name }} · {{ album.year }}</span
+        >{{ album.name
+        }}<span v-if="parseInt(album.year)"> · {{ album.year }} </span></span
       >
       <span class="album_preview__content__author">{{ authorsString }}</span>
       <span class="album_preview__content__tracks"
