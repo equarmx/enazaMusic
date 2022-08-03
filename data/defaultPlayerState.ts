@@ -1,4 +1,4 @@
-export default function PlayerState() {
+export default function playerState() {
   return {
     id: '6359469',
     parent: '709199',

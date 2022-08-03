@@ -3,7 +3,9 @@ import Vue from 'vue'
 import Vuex, { GetterTree, MutationTree, ActionTree } from 'vuex'
 
 import Product, { IAlbum, IAuthor, ITrack } from '~/services/request'
-import PlayerState from '~/data/defaultPlayerState'
+import { IBreadcrumbs } from '~/@types/IBreadcrumbs'
+import playerState from '~/data/defaultPlayerState'
+import defaultBreadcrumbs from '~/data/defaultBreadcrumbs'
 
 Vue.use(Vuex)
 
@@ -24,9 +26,11 @@ class State {
 
   albums: Array<IAlbum> = []
 
-  currentPlaying: ITrack = PlayerState()
+  currentPlaying: ITrack = playerState()
 
   durationPlay = 0
+
+  breadcrumbs: Array<IBreadcrumbs> = defaultBreadcrumbs()
 }
 
 const getters = <GetterTree<State, string | number | object | []>>{
@@ -60,6 +64,10 @@ const mutations = <MutationTree<State>>{
   /* PLAYER STATE */
   CHANGE_PLAYER_STATE(state, track: ITrack) {
     state.currentPlaying = track
+  },
+  /* BREADCRUMBS */
+  CHANGE_BREADCRUMBS(state, route: IBreadcrumbs) {
+    state.breadcrumbs.push(route)
   },
 }
 

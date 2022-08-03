@@ -3,6 +3,7 @@
     <Header />
     <main class="container">
       <div class="container_wrapper">
+        <Breadcrumbs />
         <Nuxt></Nuxt>
       </div>
     </main>
@@ -15,11 +16,13 @@ import Header from '~/components/header/Header.vue'
 
 import headLinks from '~/data/headLinks'
 import Footer from '~/components/footer/Footer.vue'
+import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs.vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Default',
   components: {
+    Breadcrumbs,
     Footer,
     Header,
   },
