@@ -10,7 +10,7 @@
           :album="item"
         />
       </div>
-      <div v-if="$store.state.isLoading"></div>
+      <Loader v-if="$store.state.isLoading" />
     </div>
   </div>
 </template>
@@ -18,9 +18,10 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import AlbumCard from '~/components/AlbumCard.vue'
+import Loader from '~/components/Loader.vue'
 
 @Component({
-  components: { AlbumCard },
+  components: { Loader, AlbumCard },
   layout: (ctx) => (ctx.$device.isMobile ? 'mobile' : 'default'),
 })
 export default class IndexPage extends Vue {
