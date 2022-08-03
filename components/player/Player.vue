@@ -1,29 +1,23 @@
 <template>
   <div class="player-wrapper">
-    <div
-      class="player-wrapper__img"
-      :style="`background: url(${$store.state.currentPlaying.coverUrl}); background-repeat: no-repeat;
-  background-size: contain, cover;`"
-    >
+    <div class="player-wrapper__img" :style="imageStyle">
       <div class="player_controller">
-        <div class="player_controller__invisible">
+        <div
+          class="player_controller__invisible"
+          :class="{ invisibleDark: isMobile }"
+        >
           <b-icon
             :icon="playing ? 'pause' : 'play'"
-            type="is-white"
+            :type="isMobile ? 'is-black' : 'is-white'"
             size="is-medium"
           ></b-icon>
         </div>
-        <div class="player_controller__status">
-          <svg
-            width="50"
-            height="50"
-            class="player_controller__status__svg"
-            @click="onClickPlayer"
-          >
+        <div class="player_controller__status" @click="onClickPlayer">
+          <svg width="50" height="50" class="player_controller__status__svg">
             <circle
               ref="circle"
               class="player_controller__status__svg__circle"
-              stroke="white"
+              :stroke="isMobile ? 'black' : 'white'"
               stroke-width="1"
               cx="25"
               cy="25"
@@ -56,6 +50,19 @@ import getDurationToPercent from '~/utils/getDurationToPercent'
 @Component
 export default class Player extends Vue {
   playing = false
+
+  get isMobile(): boolean {
+    return this.$device.isMobile
+  }
+
+  get imageStyle(): string {
+    if (this.isMobile) {
+      return `background: unset;`
+    } else {
+      return `background: url(${this.$store.state.currentPlaying.coverUrl}); background-repeat: no-repeat;
+  background-size: contain, cover;`
+    }
+  }
 
   get authorsString(): string {
     return getAuthorString(

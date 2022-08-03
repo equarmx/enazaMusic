@@ -4,6 +4,7 @@
     <main class="container">
       <Nuxt></Nuxt>
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 import MobileHeader from '~/components/header/MobileHeader.vue'
 
 import headLinks from '~/data/headLinks'
+import Footer from '~/components/footer/Footer.vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Mobile',
   components: {
+    Footer,
     MobileHeader,
   },
   head: {

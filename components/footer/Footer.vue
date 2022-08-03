@@ -23,11 +23,6 @@ export default class Footer extends Vue {
     )
   }
 }
-// export default {
-//   // eslint-disable-next-line vue/multi-word-component-names
-//   name: 'Footer',
-//   components: { Player },
-// }
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +33,7 @@ export default class Footer extends Vue {
   bottom: 0;
   background: #f5f5f5;
   height: 80px;
-  padding: 0 !important;
+  padding: 0 20px !important;
 
   &__wrapper {
     display: flex;

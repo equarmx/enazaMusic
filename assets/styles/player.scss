@@ -80,6 +80,8 @@
     cursor: pointer;
 
     &__svg {
+      outline: none;
+
       &__circle {
         transform-origin: center;
         transform: rotate(-90deg);
@@ -87,4 +89,8 @@
       }
     }
   }
+}
+
+.invisibleDark {
+  border: 1px solid darkgrey;
 }
