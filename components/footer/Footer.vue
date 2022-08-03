@@ -1,19 +1,33 @@
 <template>
-  <div class="footer">
-    <div class="footer__wrapper">
-      <Player />
+  <transition name="slide-fade">
+    <div v-if="showFooter" class="footer">
+      <div class="footer__wrapper">
+        <Player />
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import Player from '~/components/player/Player.vue'
 
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Footer',
+@Component({
   components: { Player },
+})
+export default class Footer extends Vue {
+  get showFooter(): boolean {
+    return (
+      !!this.$store.getters.authorsLength &&
+      this.$store.getters.currentPlayingState
+    )
+  }
 }
+// export default {
+//   // eslint-disable-next-line vue/multi-word-component-names
+//   name: 'Footer',
+//   components: { Player },
+// }
 </script>
 
 <style lang="scss" scoped>

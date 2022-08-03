@@ -2,9 +2,9 @@ import { IAlbum, IAuthor, ITrack } from '~/services/request'
 
 export default function getAuthorString(
   authors: Array<IAuthor>,
-  albumOrTrack: IAlbum | ITrack
+  albumOrTrack: IAlbum | ITrack | undefined
 ) {
-  if (!authors || !albumOrTrack) return ''
+  if (!authors || albumOrTrack === undefined) return ''
   let result
   let filteredAuthors = authors
     .filter((elem: IAuthor) => {

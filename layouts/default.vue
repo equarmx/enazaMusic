@@ -4,9 +4,7 @@
     <main class="container">
       <Nuxt></Nuxt>
     </main>
-    <transition name="slide-fade">
-      <Footer v-if="showFooter" />
-    </transition>
+    <Footer />
   </div>
 </template>
 
@@ -23,17 +21,7 @@ export default {
     Footer,
     Header,
   },
-  head: {
-    link: headLinks.headLinks,
-  },
-  computed: {
-    showFooter(): boolean {
-      return (
-        this.$store.state.currentPlaying !== null &&
-        !!this.$store.state.authors.length !== 0
-      )
-    },
-  },
+  head: {},
 }
 </script>
 

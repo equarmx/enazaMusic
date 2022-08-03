@@ -22,6 +22,8 @@ export default {
   text-align: center;
   width: 160px;
   height: 160px;
+  border: unset !important;
+  animation: unset !important;
 }
 
 .lds-ring {

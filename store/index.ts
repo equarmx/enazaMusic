@@ -25,9 +25,14 @@ class State {
   albums: Array<IAlbum> = []
 
   currentPlaying: ITrack = PlayerState()
+
+  durationPlay = 0
 }
 
-const getters = <GetterTree<State, string | number | object | []>>{}
+const getters = <GetterTree<State, string | number | object | []>>{
+  authorsLength: (state) => state.authors.length,
+  currentPlayingState: (state) => !!state.currentPlaying,
+}
 
 const mutations = <MutationTree<State>>{
   /* NOTIFICATION */
