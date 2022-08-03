@@ -22,7 +22,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item">
+        <div class="navbar-item search-elem">
           <img
             :src="require('~/assets/svg/SearchIcon.svg')"
             width="24"
@@ -30,7 +30,7 @@
             alt="Enaza Search"
           />
         </div>
-        <div v-if="!showDesktop" class="navbar-item">
+        <div v-if="!showDesktop" class="navbar-item last-elem">
           <div
             class="menu btn1"
             :class="{ open: showBurger }"
@@ -71,7 +71,7 @@ export default class Header extends Vue {
 
   onResize(): void {
     const widthPage = document.documentElement.clientWidth
-    this.showDesktop = widthPage > 663
+    this.showDesktop = widthPage > 703
   }
 
   openMenu(): void {

@@ -1,6 +1,12 @@
 @import 'main';
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 720px) {
+  .navbar {
+    //margin: 0 14px !important;
+  }
+  .logo {
+    padding: 0.5rem 0 !important;
+  }
   .navbar-wrapper {
     height: 94px !important;
     align-items: flex-end !important;
@@ -10,7 +16,7 @@
       minmax(192px, 1fr)
       minmax(60px, auto) !important;
     column-gap: 5px;
-    padding: 0 2px 0 8px;
+    //padding: 0 2px 0 8px;
   }
   .navbar-end {
     display: flex;
@@ -36,6 +42,7 @@
     minmax(312px, auto)
     minmax(24px, 1fr);
   column-gap: 15px;
+  margin: $main-margin;
 }
 
 .navbar-list {
@@ -65,6 +72,18 @@
   font-size: 15px;
 }
 
+.last-elem {
+  padding: 0.5rem 0 !important;
+}
+
+.last-elem-mobile {
+  padding: 0.5rem 0 0.5rem 0.5rem !important;
+}
+
+.search-elem {
+  padding: 0.5rem 0.7rem !important;
+}
+
 .img {
   padding: 0 !important;
 }
@@ -75,7 +94,7 @@ $color: #b3e5fc;
 $white: #ffffff;
 
 @mixin btn() {
-  width: 30px;
+  width: 20px;
   height: 30px;
   transition-duration: 0.5s;
 }

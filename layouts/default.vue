@@ -2,7 +2,9 @@
   <div class="app">
     <Header />
     <main class="container">
-      <Nuxt></Nuxt>
+      <div class="container_wrapper">
+        <Nuxt></Nuxt>
+      </div>
     </main>
     <Footer />
   </div>
@@ -28,24 +30,4 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/main';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0 !important;
-}
-
-.container {
-  max-width: $max-wrapper !important;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.8s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
 </style>

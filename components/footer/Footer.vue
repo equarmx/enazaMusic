@@ -28,6 +28,17 @@ export default class Footer extends Vue {
 <style lang="scss" scoped>
 @import 'assets/styles/main';
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.8s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 .footer {
   position: sticky;
   bottom: 0;

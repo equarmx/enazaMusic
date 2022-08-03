@@ -3,9 +3,8 @@
 .album_preview {
   display: flex;
   flex-direction: column;
-  width: 278px;
+  width: 100%;
   overflow: hidden;
-  //justify-content: space-between;
 
   &__img {
     display: flex;

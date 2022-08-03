@@ -2,7 +2,7 @@
   <nav class="navbar-wrapper" role="navigation" aria-label="main navigation">
     <div class="navbar">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item logo" href="/">
           <img
             :src="require('~/assets/svg/EnazaMusic.svg')"
             width="192"
@@ -12,7 +12,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item">
+        <div class="navbar-item search-elem">
           <img
             :src="require('~/assets/svg/SearchIcon.svg')"
             width="24"
@@ -20,7 +20,7 @@
             alt="Enaza Search"
           />
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item last-elem-mobile">
           <div
             class="menu btn1"
             :class="{ open: showBurger }"
