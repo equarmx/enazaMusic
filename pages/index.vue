@@ -23,18 +23,18 @@ import Loader from '~/components/Loader.vue'
 @Component({
   components: { Loader, AlbumCard },
   layout: (ctx) => (ctx.$device.isMobile ? 'mobile' : 'default'),
+  async fetch() {
+    await this.$store.dispatch('getNews', 1)
+  },
 })
 export default class IndexPage extends Vue {
   page = 1
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  async fetch() {
-    await this.$store.dispatch('getNews', 1)
-  }
 
   async getMoreNews() {
-    this.page++
-    await this.$store.dispatch('getNews', this.page)
+    if (!this.$store.state.isLoading) {
+      this.page++
+      await this.$store.dispatch('getNews', this.page)
+    }
   }
 
   handleScroll() {

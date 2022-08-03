@@ -2,7 +2,8 @@ import Vue from 'vue'
 // eslint-disable-next-line import/named
 import Vuex, { GetterTree, MutationTree, ActionTree } from 'vuex'
 
-import Product, { IAlbum, IAuthor } from '~/services/request'
+import Product, { IAlbum, IAuthor, ITrack } from '~/services/request'
+import PlayerState from '~/data/defaultPlayerState'
 
 Vue.use(Vuex)
 
@@ -22,18 +23,23 @@ class State {
   authors: Array<IAuthor> = []
 
   albums: Array<IAlbum> = []
+
+  currentPlaying: ITrack = PlayerState()
 }
 
 const getters = <GetterTree<State, string | number | object | []>>{}
 
 const mutations = <MutationTree<State>>{
+  /* NOTIFICATION */
   CHANGE_NOTIFICATION(state, value: string) {
     state.notification.show = true
     state.notification.message = value
   },
+  /* LOADING */
   SET_LOADING_STATUS(state, value: boolean) {
     state.isLoading = value
   },
+  /* ALBUMS/AUTHORS */
   CHANGE_AUTHORS(state, authors: Array<IAuthor>) {
     state.authors = authors
   },
@@ -45,6 +51,10 @@ const mutations = <MutationTree<State>>{
   },
   ADD_ALBUMS(state, albums: Array<IAlbum>) {
     state.albums.push(...albums)
+  },
+  /* PLAYER STATE */
+  CHANGE_PLAYER_STATE(state, track: ITrack) {
+    state.currentPlaying = track
   },
 }
 

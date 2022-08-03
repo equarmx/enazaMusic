@@ -2,9 +2,6 @@ import axios, { AxiosInstance } from 'axios'
 
 const axiosClient: AxiosInstance = axios.create({
   baseURL: 'https://api.mobimusic.kz',
-  params: {
-    limit: 10,
-  },
 })
 
 export interface IAlbum {
@@ -37,6 +34,23 @@ export interface IAuthor {
   description: string
 }
 
+export interface ITrack {
+  id: string
+  parent: string
+  name: string
+  cover: string
+  coverUrl: string
+  year: string
+  price: string
+  dir: string
+  state: string
+  peopleIds: string[]
+  duration: string
+  isUserLikes: boolean
+  lyrics2?: string | null
+  hasLyrics: boolean
+}
+
 export interface IResponse {
   album: Array<IAlbum>
   people: Array<IAuthor>
@@ -45,12 +59,14 @@ export interface IResponse {
 export default class Product {
   static async getNews(
     url: string,
-    page: string
+    pageRequest: string
   ): Promise<IResponse | undefined> {
     try {
+      const limitRequest = 10
       const { data } = await axiosClient.get(url, {
         params: {
-          page,
+          page: pageRequest,
+          limit: limitRequest,
         },
       })
       return data.collection

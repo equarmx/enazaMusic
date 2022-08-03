@@ -28,7 +28,7 @@
 
 .navbar {
   background: $base-color;
-  max-width: 1185px;
+  max-width: $max-wrapper;
   width: 100%;
   display: grid;
   grid-template-columns:
