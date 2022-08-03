@@ -19,9 +19,9 @@ class State {
 
   isLoading = false
 
-  authors: Array<IAuthor> | [] = []
+  authors: Array<IAuthor> = []
 
-  albums: Array<IAlbum> | [] = []
+  albums: Array<IAlbum> = []
 }
 
 const getters = <GetterTree<State, string | number | object | []>>{}
@@ -40,6 +40,12 @@ const mutations = <MutationTree<State>>{
   CHANGE_ALBUMS(state, albums: Array<IAlbum>) {
     state.albums = albums
   },
+  ADD_AUTHORS(state, authors: Array<IAuthor>) {
+    state.authors.push(...authors)
+  },
+  ADD_ALBUMS(state, albums: Array<IAlbum>) {
+    state.albums.push(...albums)
+  },
 }
 
 const actions = <ActionTree<State, string | number | object | []>>{
@@ -47,8 +53,13 @@ const actions = <ActionTree<State, string | number | object | []>>{
     commit('SET_LOADING_STATUS', true)
     const response = await Product.getNews(`/?method=product.getNews`, page)
     if (response) {
-      commit('CHANGE_AUTHORS', Object.values(response.people))
-      commit('CHANGE_ALBUMS', Object.values(response.album))
+      if (page > 1) {
+        commit('ADD_AUTHORS', Object.values(response.people))
+        commit('ADD_ALBUMS', Object.values(response.album))
+      } else {
+        commit('CHANGE_AUTHORS', Object.values(response.people))
+        commit('CHANGE_ALBUMS', Object.values(response.album))
+      }
     }
     commit('SET_LOADING_STATUS', false)
   },
