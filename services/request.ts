@@ -66,10 +66,7 @@ export interface INews {
 }
 
 export interface ICard {
-  album: Array<IAlbum>
-  category: Array<ICategory>
-  track: Array<ITrack>
-  people: Array<IAuthor>
+  [key: string]: Array<IAlbum | ICategory | ITrack | IAuthor>
 }
 
 export default class Product {

@@ -1,10 +1,10 @@
 import { IAlbum, IAuthor, ITrack } from '~/services/request'
 
 export default function getAuthorString(
-  authors: Array<IAuthor>,
+  authors: Array<IAuthor> | undefined,
   albumOrTrack: IAlbum | ITrack | undefined
 ) {
-  if (!authors || albumOrTrack === undefined) return ''
+  if (authors === undefined || albumOrTrack === undefined) return ''
   let result
   let filteredAuthors = authors
     .filter((elem: IAuthor) => {

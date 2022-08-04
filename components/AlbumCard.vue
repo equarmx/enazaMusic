@@ -1,5 +1,4 @@
 <template>
-  <!--  <NuxtLink :to="`/${album.id}`">-->
   <div class="album_preview" @click="redirectDetail">
     <div class="album_preview__img">
       <img :src="album.coverUrl" :alt="album.name" />
@@ -15,7 +14,6 @@
       >
     </div>
   </div>
-  <!--  </NuxtLink>-->
 </template>
 
 <script lang="ts">
@@ -32,7 +30,6 @@ export default class AlbumCard extends Vue {
   }
 
   redirectDetail(): void {
-    console.log('clicked')
     this.$store.commit('CHANGE_BREADCRUMBS', {
       href: '#',
       name: `${this.album?.name}${

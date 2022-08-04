@@ -4,5 +4,9 @@ export default function getDurationToMinutes(
   let refactored = typeof duration === 'string' ? parseInt(duration) : duration
   let minutes = Math.floor(refactored / 60)
   let seconds = refactored - minutes * 60
-  return `${minutes}:${seconds}`
+  let refactorSeconds: string
+  if (seconds < 10) {
+    refactorSeconds = '0' + seconds
+  } else refactorSeconds = seconds.toString()
+  return `${minutes}:${refactorSeconds}`
 }

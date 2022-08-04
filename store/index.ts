@@ -2,7 +2,7 @@ import Vue from 'vue'
 // eslint-disable-next-line import/named
 import Vuex, { GetterTree, MutationTree, ActionTree } from 'vuex'
 
-import Product, { IAlbum, IAuthor, ITrack } from '~/services/request'
+import Product, { IAlbum, IAuthor, ICard, ITrack } from '~/services/request'
 import { IBreadcrumbs } from '~/@types/IBreadcrumbs'
 import playerState from '~/data/defaultPlayerState'
 import defaultBreadcrumbs from '~/data/defaultBreadcrumbs'
@@ -91,9 +91,15 @@ const actions = <ActionTree<State, string | number | object | []>>{
   },
   async getCard({ commit }, id) {
     commit('SET_LOADING_STATUS', true)
-    const result = await Product.getCard('/?method=product.getCard', id)
+    let result = {} as ICard
+    const data = await Product.getCard('/?method=product.getCard', id)
     commit('SET_LOADING_STATUS', false)
-    return result
+    if (data) {
+      for (let key in data) {
+        result[key] = Object.values(data[key])
+      }
+      return result
+    } else return {}
   },
 }
 
