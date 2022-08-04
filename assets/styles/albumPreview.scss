@@ -12,7 +12,10 @@
     font-size: 15px !important;
     padding-bottom: 5px !important;
   }
-  .album_preview__content__tracks {
+  .album_preview__content__tracks_block__elem {
+    font-size: 10px !important;
+  }
+  .album_preview__content__duration {
     font-size: 10px !important;
   }
 }
@@ -68,11 +71,26 @@
       text-overflow: ellipsis;
     }
 
-    &__tracks {
+    &__duration {
       font-weight: 400;
       font-size: 15px;
       line-height: 120%;
       color: $sub-text;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__tracks_block {
+      display: flex;
+      justify-content: space-between;
+
+      &__elem {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        color: $sub-text;
+      }
     }
   }
 }

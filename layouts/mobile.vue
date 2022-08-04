@@ -11,7 +11,6 @@
 <script lang="ts">
 import MobileHeader from '~/components/header/MobileHeader.vue'
 
-import headLinks from '~/data/headLinks'
 import Footer from '~/components/footer/Footer.vue'
 
 export default {
@@ -20,9 +19,6 @@ export default {
   components: {
     Footer,
     MobileHeader,
-  },
-  head: {
-    link: headLinks.headLinks,
   },
 }
 </script>

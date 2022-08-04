@@ -31,6 +31,8 @@ class State {
   durationPlay = 0
 
   breadcrumbs: Array<IBreadcrumbs> = defaultBreadcrumbs()
+
+  page = 1
 }
 
 const getters = <GetterTree<State, string | number | object | []>>{
@@ -74,6 +76,9 @@ const mutations = <MutationTree<State>>{
   },
   RESET_BREADCRUMBS(state) {
     state.breadcrumbs = defaultBreadcrumbs()
+  },
+  CHANGE_PAGE(state, value) {
+    state.page = value
   },
 }
 

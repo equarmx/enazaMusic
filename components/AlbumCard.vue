@@ -10,9 +10,18 @@
           }}<span v-if="parseInt(album.year)"> · {{ album.year }} </span></span
         >
         <span class="album_preview__content__author">{{ authorsString }}</span>
-        <span class="album_preview__content__tracks"
-          >Треков: {{ album.trackCount }}</span
-        >
+        <div class="album_preview__content__duration">
+          <span>Время прослушивания:</span>
+          <span>{{ durationTime }}</span>
+        </div>
+        <div class="album_preview__content__tracks_block">
+          <span class="album_preview__content__tracks_block__elem"
+            >Треков: {{ album.trackCount }}</span
+          >
+          <span class="album_preview__content__tracks_block__elem">
+            Прослушано: 157
+          </span>
+        </div>
       </div>
     </div>
   </NuxtLink>
@@ -22,6 +31,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { IAlbum } from '~/services/request'
 import getAuthorString from '~/utils/getAuthorsString'
+import getDurationToTime from '~/utils/getDurationToTime.ts'
 
 @Component
 export default class AlbumCard extends Vue {
@@ -29,6 +39,11 @@ export default class AlbumCard extends Vue {
 
   get authorsString(): string {
     return getAuthorString(this.$store.state.authors, this.album)
+  }
+
+  get durationTime(): string {
+    if (!this.album) return ''
+    return getDurationToTime(this.album.duration, true)
   }
 }
 </script>

@@ -6,15 +6,14 @@
         <Breadcrumbs />
         <Nuxt></Nuxt>
       </div>
-      <Footer />
     </main>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import Header from '~/components/header/Header.vue'
 
-import headLinks from '~/data/headLinks'
 import Footer from '~/components/footer/Footer.vue'
 import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs.vue'
 
@@ -26,7 +25,6 @@ export default {
     Footer,
     Header,
   },
-  head: {},
 }
 </script>
 

@@ -54,7 +54,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import getAuthorString from '~/utils/getAuthorsString'
-import getDurationToMinutes from '~/utils/getDurationToMinutes'
+import getDurationToTime from '~/utils/getDurationToTime.ts'
 import getDurationToPercent from '~/utils/getDurationToPercent'
 
 @Component
@@ -82,7 +82,7 @@ export default class Player extends Vue {
   }
 
   get durationTime(): string {
-    return getDurationToMinutes(this.$store.state.currentPlaying.duration)
+    return getDurationToTime(this.$store.state.currentPlaying.duration)
   }
 
   get radius(): number {

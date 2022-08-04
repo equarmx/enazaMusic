@@ -30,7 +30,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { IAuthor, ITrack } from '~/services/request'
 import getAuthorString from '~/utils/getAuthorsString'
-import getDurationToMinutes from '~/utils/getDurationToMinutes'
+import getDurationToTime from '~/utils/getDurationToTime.ts'
 
 @Component
 export default class TrackInAlbum extends Vue {
@@ -47,7 +47,7 @@ export default class TrackInAlbum extends Vue {
 
   get durationTime(): string {
     if (!this.track) return '0'
-    return getDurationToMinutes(this.track.duration)
+    return getDurationToTime(this.track.duration)
   }
 
   get playing(): boolean {
