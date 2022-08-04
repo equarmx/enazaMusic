@@ -1,8 +1,65 @@
 @import "main";
 
+@media only screen and (max-width: 825px) {
+  .album_detail__top__info {
+    .name {
+      font-size: 36px !important;
+    }
+  }
+  .album_detail__bottom {
+    grid-template-columns: repeat(2, minmax(200px, 377px)) !important;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .album_detail__top {
+    display: flex !important;
+    flex-direction: column !important;
+    row-gap: 20px !important;
+    padding-bottom: 30px !important;
+
+    &__img {
+      width: 100% !important;
+
+      img {
+        width: 255px !important;
+      }
+    }
+
+    &__info {
+      .name {
+        font-size: 24px !important;
+      }
+
+      .author {
+        font-size: 15px !important;
+      }
+
+      .tracks {
+        font-size: 15px !important;
+      }
+    }
+  }
+  .album_detail__bottom {
+    grid-template-columns: repeat(2, minmax(200px, 377px)) !important;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .album_detail__bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .track {
+    width: 100% !important;
+  }
+}
+
 .album_wrapper {
   padding-top: 22px;
-  margin-bottom: 80px;
+  //margin-bottom: 80px;
 
   .album_detail {
     display: flex;
@@ -12,6 +69,7 @@
       display: grid;
       grid-template-columns: minmax(255px, 278px) auto;
       column-gap: 56px;
+      padding-bottom: 44px;
 
       &__img {
         display: flex;
@@ -82,7 +140,7 @@
 .track {
   display: grid;
   grid-template-columns: 60px auto 60px;
-  padding-top: 44px;
+  align-items: center;
   column-gap: 10px;
   max-width: 377px;
   height: 80px;

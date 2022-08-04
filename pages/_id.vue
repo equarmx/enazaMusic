@@ -6,9 +6,12 @@
           <img :src="albumData.coverUrl" :alt="albumData.name" />
         </div>
         <div class="album_detail__top__info">
-          <span class="album_detail__top__info__block name">
-            {{ albumData.name }}
-          </span>
+          <span class="album_detail__top__info__block name"
+            >{{ albumData.name
+            }}<span v-if="parseInt(albumData.year)">
+              · {{ albumData.year }}
+            </span></span
+          >
           <span class="album_detail__top__info__block author">{{
             getFullLengthAuthor
           }}</span>
@@ -40,6 +43,7 @@ import authorsState from '~/data/defaultAuthorsState'
 
 @Component({
   components: { Loader, TrackInAlbum },
+  layout: (ctx) => (ctx.$device.isMobile ? 'mobile' : 'default'),
   async asyncData({ store, params }) {
     return store.dispatch('getCard', params.id).then((res) => {
       return { album: res }

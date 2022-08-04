@@ -1,5 +1,22 @@
 @import 'main';
 
+@media only screen and (max-width: 570px) {
+  .album_preview__img {
+    height: 158px !important;
+    padding-bottom: 10px !important;
+  }
+  .album_preview__content__name_year {
+    font-size: 15px !important;
+  }
+  .album_preview__content__author {
+    font-size: 15px !important;
+    padding-bottom: 5px !important;
+  }
+  .album_preview__content__tracks {
+    font-size: 10px !important;
+  }
+}
+
 .album_preview {
   display: flex;
   flex-direction: column;

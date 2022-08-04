@@ -1,6 +1,5 @@
 <template>
   <div class="main-wrapper">
-    <div class="main-wrapper__breadcrumbs"></div>
     <div class="main-wrapper__album-list">
       <h1 class="main-wrapper__album-list__title">Каталог</h1>
       <div ref="scrollComponent" class="main-wrapper__album-list__container">

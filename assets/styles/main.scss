@@ -16,24 +16,7 @@ $main-margin: 0px 20px;
   }
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0 !important;
-}
-
-.container_wrapper {
-  max-width: $max-wrapper !important;
-  margin: 0 auto;
-}
-
-.container {
-  max-width: unset !important;
-  padding: $main-margin;
-}
-
 .main-wrapper {
-  &__breadcrumbs {
-  }
 
   &__album-list {
     margin-bottom: 80px;

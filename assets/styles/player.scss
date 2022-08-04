@@ -1,10 +1,12 @@
 @import 'main';
 
 .player-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 60px auto 60px;
   align-items: center;
   height: 100%;
   column-gap: 10px;
+  width: 100%;
 
   &__img {
     display: flex;
@@ -29,6 +31,9 @@
     display: flex;
     flex-direction: column;
     row-gap: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &__block {
       overflow: hidden;
@@ -37,21 +42,31 @@
       font-size: 15px;
       line-height: 120%;
     }
+
+    .author {
+      color: $sub-text;
+      font-weight: 400;
+    }
+
+    .name {
+      font-weight: 700;
+      color: $main-text;
+    }
+
+    .length {
+      color: $sub-text;
+      font-weight: 400;
+    }
   }
 
-  .author {
-    color: $sub-text;
-    font-weight: 400;
-  }
+  &__actions {
+    align-self: center;
+    justify-self: end;
+    padding-right: 17px;
 
-  .name {
-    font-weight: 700;
-    color: $main-text;
-  }
-
-  .length {
-    color: $sub-text;
-    font-weight: 400;
+    &__icon {
+      color: #D9D9D9 !important;
+    }
   }
 }
 

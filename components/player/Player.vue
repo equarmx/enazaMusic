@@ -30,13 +30,23 @@
       </div>
     </div>
     <div class="player-wrapper__info">
-      <div class="player-wrapper__info__block author">{{ authorsString }}</div>
-      <div class="player-wrapper__info__block name">
+      <span class="player-wrapper__info__block author">{{
+        authorsString
+      }}</span>
+      <span class="player-wrapper__info__block name">
         {{ $store.state.currentPlaying.name }}
-      </div>
-      <div class="player-wrapper__info__block length">
+      </span>
+      <span class="player-wrapper__info__block length">
         {{ durationTime }}
-      </div>
+      </span>
+    </div>
+    <div class="player-wrapper__actions">
+      <b-icon
+        class="player-wrapper__actions__icon"
+        icon="dots-horizontal"
+        size="is-medium"
+        type="is-light"
+      ></b-icon>
     </div>
   </div>
 </template>
