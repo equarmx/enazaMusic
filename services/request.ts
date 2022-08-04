@@ -51,8 +51,24 @@ export interface ITrack {
   hasLyrics: boolean
 }
 
-export interface IResponse {
+export interface ICategory {
+  id: string
+  name: string
+  kz_name: string
+  en_name: string
+  have_child: string
+  child: string[]
+}
+
+export interface INews {
   album: Array<IAlbum>
+  people: Array<IAuthor>
+}
+
+export interface ICard {
+  album: Array<IAlbum>
+  category: Array<ICategory>
+  track: Array<ITrack>
   people: Array<IAuthor>
 }
 
@@ -60,13 +76,29 @@ export default class Product {
   static async getNews(
     url: string,
     pageRequest: string
-  ): Promise<IResponse | undefined> {
+  ): Promise<INews | undefined> {
     try {
       const limitRequest = 10
       const { data } = await axiosClient.get(url, {
         params: {
           page: pageRequest,
           limit: limitRequest,
+        },
+      })
+      return data.collection
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  static async getCard(
+    url: string,
+    id: number | string
+  ): Promise<ICard | undefined> {
+    try {
+      const { data } = await axiosClient.get(url, {
+        params: {
+          productId: id,
         },
       })
       return data.collection

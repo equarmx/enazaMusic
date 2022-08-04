@@ -69,6 +69,9 @@ const mutations = <MutationTree<State>>{
   CHANGE_BREADCRUMBS(state, route: IBreadcrumbs) {
     state.breadcrumbs.push(route)
   },
+  CLICK_BREADCRUMBS(state, index: number) {
+    state.breadcrumbs.splice(index + 1, state.breadcrumbs.length - (index + 1))
+  },
 }
 
 const actions = <ActionTree<State, string | number | object | []>>{
@@ -85,6 +88,12 @@ const actions = <ActionTree<State, string | number | object | []>>{
       }
     }
     commit('SET_LOADING_STATUS', false)
+  },
+  async getCard({ commit }, id) {
+    commit('SET_LOADING_STATUS', true)
+    const result = await Product.getCard('/?method=product.getCard', id)
+    commit('SET_LOADING_STATUS', false)
+    return result
   },
 }
 
