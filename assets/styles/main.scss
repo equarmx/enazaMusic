@@ -11,15 +11,19 @@ $main-margin: 0px 20px;
 }
 
 @media only screen and (max-width: 570px) {
+  .main-wrapper__album-list {
+    margin-bottom: 30px !important;
+  }
   .main-wrapper__album-list__container {
     grid-template-columns: repeat(2, minmax(158px, 278px)) !important;
   }
 }
 
 .main-wrapper {
+  max-width: $max-wrapper !important;
 
   &__album-list {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 
     &__title {
       font-weight: 700;

@@ -30,6 +30,13 @@ class State {
 
   durationPlay = 0
 
+  isPlaying = false
+
+  playingURL =
+    'https://enazadevkz.cdnvideo.ru/tank1/sony/A10301A0004574902L_20210331042345765/resources/ad5a61f35b99.mp3'
+
+  playingStatus = 'STOPPED'
+
   breadcrumbs: Array<IBreadcrumbs> = defaultBreadcrumbs()
 
   page = 1
@@ -38,6 +45,7 @@ class State {
 const getters = <GetterTree<State, string | number | object | []>>{
   authorsLength: (state) => state.authors.length,
   currentPlayingState: (state) => !!state.currentPlaying,
+  playedTimeToMMS: (state) => state.durationPlay,
 }
 
 const mutations = <MutationTree<State>>{
@@ -67,6 +75,28 @@ const mutations = <MutationTree<State>>{
   CHANGE_PLAYER_STATE(state, track: ITrack) {
     state.currentPlaying = track
   },
+  CHANGE_PLAY_STATUS(state, value) {
+    state.isPlaying = value
+  },
+  CHANGE_DURATION_PLAY(state, value) {
+    state.durationPlay = value
+  },
+  PLAYING_STATUS_STOPPED(state) {
+    state.playingStatus = 'STOPPED'
+  },
+  PLAYING_STATUS_PAUSE(state) {
+    state.playingStatus = 'PAUSED'
+  },
+  PLAYING_STATUS_PLAY(state) {
+    state.playingStatus = 'PLAYING'
+  },
+  CHANGE_URL_BY_CLICK(state) {
+    state.playingURL =
+      state.playingURL ===
+      'https://enazadevkz.cdnvideo.ru/tank3/medialand/2021_05_12/1.mp3'
+        ? 'https://enazadevkz.cdnvideo.ru/tank1/sony/A10301A0004574902L_20210331042345765/resources/ad5a61f35b99.mp3'
+        : 'https://enazadevkz.cdnvideo.ru/tank3/medialand/2021_05_12/1.mp3'
+  },
   /* BREADCRUMBS */
   CHANGE_BREADCRUMBS(state, route: IBreadcrumbs) {
     state.breadcrumbs.push(route)
@@ -77,6 +107,7 @@ const mutations = <MutationTree<State>>{
   RESET_BREADCRUMBS(state) {
     state.breadcrumbs = defaultBreadcrumbs()
   },
+  /* PAGE */
   CHANGE_PAGE(state, value) {
     state.page = value
   },

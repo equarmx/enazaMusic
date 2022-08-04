@@ -4,7 +4,7 @@
       <img :src="track.coverUrl" :alt="track.name" />
       <div class="track__img__player">
         <b-icon
-          :icon="playing ? 'pause' : 'play'"
+          :icon="playing && $store.state.isPlaying ? 'pause' : 'play'"
           type="is-white"
           size="is-medium"
         ></b-icon>
@@ -30,7 +30,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { IAuthor, ITrack } from '~/services/request'
 import getAuthorString from '~/utils/getAuthorsString'
-import getDurationToTime from '~/utils/getDurationToTime.ts'
+import getDurationToTime from '~/utils/getDurationToTime'
 
 @Component
 export default class TrackInAlbum extends Vue {
@@ -55,9 +55,37 @@ export default class TrackInAlbum extends Vue {
     return this.$store.state.currentPlaying.id === this.track.id
   }
 
+  newTrackToPlay(): void {
+    if (this.$store.state.currentPlaying && this.track) {
+      if (this.$store.state.currentPlaying.id === this.track.id) {
+        this.$store.commit('CHANGE_PLAY_STATUS', true)
+        this.$store.commit('PLAYING_STATUS_PLAY')
+      } else {
+        this.$store.commit('CHANGE_PLAY_STATUS', false)
+        this.$store.commit('CHANGE_DURATION_PLAY', 0)
+        this.$store.commit('CHANGE_URL_BY_CLICK')
+        setTimeout(() => {
+          this.$store.commit('ADD_AUTHORS', this.authors)
+          this.$store.commit('CHANGE_PLAYER_STATE', this.track)
+          this.$store.commit('CHANGE_PLAY_STATUS', true)
+          this.$store.commit('PLAYING_STATUS_PLAY')
+        }, 100)
+      }
+    }
+  }
+
   onPlayAudio(): void {
-    this.$store.commit('ADD_AUTHORS', this.authors)
-    this.$store.commit('CHANGE_PLAYER_STATE', this.track)
+    if (this.$store.state.currentPlaying && this.track) {
+      if (
+        this.$store.state.currentPlaying.id === this.track.id &&
+        this.$store.state.isPlaying
+      ) {
+        this.$store.commit('CHANGE_PLAY_STATUS', false)
+        this.$store.commit('PLAYING_STATUS_STOPPED')
+      } else {
+        this.newTrackToPlay()
+      }
+    }
   }
 }
 </script>

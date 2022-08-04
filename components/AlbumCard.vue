@@ -10,7 +10,7 @@
           }}<span v-if="parseInt(album.year)"> · {{ album.year }} </span></span
         >
         <span class="album_preview__content__author">{{ authorsString }}</span>
-        <div class="album_preview__content__duration">
+        <div v-if="!isMobile" class="album_preview__content__duration">
           <span>Время прослушивания:</span>
           <span>{{ durationTime }}</span>
         </div>
@@ -31,7 +31,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { IAlbum } from '~/services/request'
 import getAuthorString from '~/utils/getAuthorsString'
-import getDurationToTime from '~/utils/getDurationToTime.ts'
+import getDurationToTime from '~/utils/getDurationToTime'
 
 @Component
 export default class AlbumCard extends Vue {
@@ -39,6 +39,10 @@ export default class AlbumCard extends Vue {
 
   get authorsString(): string {
     return getAuthorString(this.$store.state.authors, this.album)
+  }
+
+  get isMobile(): boolean {
+    return this.$device.isMobile
   }
 
   get durationTime(): string {

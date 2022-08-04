@@ -1,6 +1,6 @@
 export default function getDurationToTime(
   duration: number | string,
-  preview: boolean
+  preview?: boolean | undefined
 ): string {
   let refactored = typeof duration === 'string' ? parseInt(duration) : duration
 

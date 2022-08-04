@@ -54,16 +54,23 @@ body {
 
 .app {
   .container {
-    max-width: unset !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     padding: $main-margin;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+    flex: 1;
 
     .container_wrapper {
+      display: flex;
+      flex-direction: column;
       max-width: $max-wrapper !important;
       margin: 0 auto;
       flex: 1;
+      box-sizing: border-box;
     }
   }
 }

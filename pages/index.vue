@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+
 import AlbumCard from '~/components/AlbumCard.vue'
 import Loader from '~/components/Loader.vue'
 

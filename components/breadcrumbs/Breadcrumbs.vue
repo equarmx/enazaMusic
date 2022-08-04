@@ -28,10 +28,13 @@ export default class Breadcrumbs extends Vue {
 </script>
 
 <style lang="scss">
+@import 'assets/styles/main';
+
 .breadcrumb-custom {
   margin: 0 !important;
   padding-top: 10px !important;
   padding-bottom: 0px !important;
+  max-width: $max-wrapper !important;
 
   ul {
     align-items: center;
