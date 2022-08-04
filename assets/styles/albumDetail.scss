@@ -2,6 +2,7 @@
 
 .album_wrapper {
   padding-top: 22px;
+  margin-bottom: 80px;
 
   .album_detail {
     display: flex;
@@ -54,6 +55,10 @@
           font-size: 19px;
           line-height: 120%;
           color: $main-text;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .tracks {
@@ -82,15 +87,15 @@
   max-width: 377px;
   height: 80px;
   min-width: 200px;
-  cursor: pointer;
 
-  &__image {
+  &__img {
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
     position: relative;
     height: 60px;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -98,6 +103,18 @@
       margin: 0 auto;
       object-fit: cover;
       -o-object-fit: cover;
+    }
+
+    &__player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      height: 60px;
+      width: 60px;
     }
   }
 
@@ -115,6 +132,9 @@
     .name {
       font-weight: 400;
       color: $sub-text;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .author {

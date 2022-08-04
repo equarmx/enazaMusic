@@ -33,9 +33,10 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import TrackInAlbum from '~/components/albumDetail/TrackInAlbum.vue'
-import { IAlbum, IAuthor, ICard, ITrack } from '~/services/request'
+import { IAlbum, IAuthor, ICard } from '~/services/request'
 import Loader from '~/components/Loader.vue'
 import getFullLengthAuthorString from '~/utils/getFullLengthAuthorString'
+import authorsState from '~/data/defaultAuthorsState'
 
 @Component({
   components: { Loader, TrackInAlbum },
@@ -53,6 +54,22 @@ export default class Id extends Vue {
   }
 
   album: ICard | undefined
+
+  mounted() {
+    this.$store.commit('CHANGE_BREADCRUMBS', {
+      href: '#',
+      name: `${this.albumData.name}${
+        this.albumData?.year
+          ? parseInt(this.albumData?.year)
+            ? ' · ' + this.albumData?.year
+            : ''
+          : ''
+      }`,
+    })
+    if (!this.$store.state.authors.length) {
+      this.$store.commit('ADD_AUTHORS', authorsState())
+    }
+  }
 
   get albumData(): IAlbum {
     if (!this.album) return {} as IAlbum

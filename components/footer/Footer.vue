@@ -17,10 +17,7 @@ import Player from '~/components/player/Player.vue'
 })
 export default class Footer extends Vue {
   get showFooter(): boolean {
-    return (
-      !!this.$store.getters.authorsLength &&
-      this.$store.getters.currentPlayingState
-    )
+    return this.$store.getters.currentPlayingState
   }
 }
 </script>

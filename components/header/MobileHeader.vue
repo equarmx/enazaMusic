@@ -2,14 +2,14 @@
   <nav class="navbar-wrapper" role="navigation" aria-label="main navigation">
     <div class="navbar">
       <div class="navbar-brand">
-        <a class="navbar-item logo" href="/">
+        <NuxtLink class="navbar-item logo" to="/">
           <img
             :src="require('~/assets/svg/EnazaMusic.svg')"
             width="192"
             height="23"
             alt="Enaza Music"
           />
-        </a>
+        </NuxtLink>
       </div>
       <div class="navbar-end">
         <div class="navbar-item search-elem">

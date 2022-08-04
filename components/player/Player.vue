@@ -59,8 +59,8 @@ export default class Player extends Vue {
     if (this.isMobile) {
       return `background: unset;`
     } else {
-      return `background: url(${this.$store.state.currentPlaying.coverUrl}); background-repeat: no-repeat;
-  background-size: contain, cover;`
+      return `background: url(${this.$store.state.currentPlaying.coverUrl}); background-repeat: no-repeat !important;
+  background-size: contain, cover !important;`
     }
   }
 

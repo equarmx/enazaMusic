@@ -24,6 +24,7 @@ export default {
   height: 160px;
   border: unset !important;
   animation: unset !important;
+  padding-top: 20px;
 }
 
 .lds-ring {

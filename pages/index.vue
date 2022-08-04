@@ -30,6 +30,15 @@ import Loader from '~/components/Loader.vue'
 export default class IndexPage extends Vue {
   page = 1
 
+  mounted() {
+    if (process.client) {
+      this.$nextTick(() => {
+        window.addEventListener('scroll', this.handleScroll)
+      })
+    }
+    this.$store.commit('RESET_BREADCRUMBS')
+  }
+
   async getMoreNews() {
     if (!this.$store.state.isLoading) {
       this.page++
@@ -43,14 +52,6 @@ export default class IndexPage extends Vue {
       if (element.getBoundingClientRect().bottom < window.innerHeight) {
         this.getMoreNews()
       }
-    }
-  }
-
-  mounted() {
-    if (process.client) {
-      this.$nextTick(() => {
-        window.addEventListener('scroll', this.handleScroll)
-      })
     }
   }
 

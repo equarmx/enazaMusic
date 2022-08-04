@@ -1,7 +1,14 @@
 <template>
   <div class="track">
-    <div class="track__img">
+    <div class="track__img" @click="onPlayAudio">
       <img :src="track.coverUrl" :alt="track.name" />
+      <div class="track__img__player">
+        <b-icon
+          :icon="playing ? 'pause' : 'play'"
+          type="is-white"
+          size="is-medium"
+        ></b-icon>
+      </div>
     </div>
     <div class="track__info">
       <span class="track__info__block author">{{ authorsString }}</span>
@@ -41,6 +48,16 @@ export default class TrackInAlbum extends Vue {
   get durationTime(): string {
     if (!this.track) return '0'
     return getDurationToMinutes(this.track.duration)
+  }
+
+  get playing(): boolean {
+    if (!this.$store.state.currentPlaying || !this.track) return false
+    return this.$store.state.currentPlaying.id === this.track.id
+  }
+
+  onPlayAudio(): void {
+    this.$store.commit('ADD_AUTHORS', this.authors)
+    this.$store.commit('CHANGE_PLAYER_STATE', this.track)
   }
 }
 </script>

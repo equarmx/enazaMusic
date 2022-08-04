@@ -72,6 +72,9 @@ const mutations = <MutationTree<State>>{
   CLICK_BREADCRUMBS(state, index: number) {
     state.breadcrumbs.splice(index + 1, state.breadcrumbs.length - (index + 1))
   },
+  RESET_BREADCRUMBS(state) {
+    state.breadcrumbs = defaultBreadcrumbs()
+  },
 }
 
 const actions = <ActionTree<State, string | number | object | []>>{
