@@ -85,6 +85,10 @@ export default class Player extends Vue {
   }
 
   startSound() {
+    if (this.$store.state.endedSong) {
+      this.$store.commit('CHANGE_DURATION_PLAY', 0)
+      this.$store.commit('SET_ENDED_SONG', false)
+    }
     this.$store.commit('PLAYING_STATUS_PLAY')
     this.positionTime = this.$store.getters.playedTimeToMMS
     let playedTime = setInterval(() => {
@@ -97,6 +101,9 @@ export default class Player extends Vue {
           this.$store.state.durationPlay + 100
         )
       } else {
+        if (this.$store.state.durationPlay === this.refactoredDuration) {
+          this.$store.commit('SET_ENDED_SONG', true)
+        }
         clearInterval(playedTime)
         this.pause()
       }

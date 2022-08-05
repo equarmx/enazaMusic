@@ -37,6 +37,8 @@ class State {
 
   playingStatus = 'STOPPED'
 
+  endedSong = false
+
   breadcrumbs: Array<IBreadcrumbs> = defaultBreadcrumbs()
 
   page = 1
@@ -96,6 +98,9 @@ const mutations = <MutationTree<State>>{
       'https://enazadevkz.cdnvideo.ru/tank3/medialand/2021_05_12/1.mp3'
         ? 'https://enazadevkz.cdnvideo.ru/tank1/sony/A10301A0004574902L_20210331042345765/resources/ad5a61f35b99.mp3'
         : 'https://enazadevkz.cdnvideo.ru/tank3/medialand/2021_05_12/1.mp3'
+  },
+  SET_ENDED_SONG(state, value: boolean) {
+    state.endedSong = value
   },
   /* BREADCRUMBS */
   CHANGE_BREADCRUMBS(state, route: IBreadcrumbs) {
