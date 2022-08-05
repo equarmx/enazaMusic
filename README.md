@@ -1,9 +1,13 @@
 # enazaMusic
 
 In app i used Nuxt 2 + Typescript. Different libraries and tools:
+
 -Vuex,
+
 -Bulma (nuxt-buefy),
--Vue-soundmanager
+
+-Vue-soundmanager,
+
 -eslint/prettier
 
 ## Build Setup
